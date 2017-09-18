@@ -20,3 +20,8 @@ TEST(TicTacToeBoardTest, sanityCheck)
 	ASSERT_TRUE(true);
 }
 */
+
+TEST(TicTacToeBoardTest, toggleTurn)
+{
+	ASSERT_TRUE(true);
+}

@@ -1,10 +1,13 @@
 /**
  * Unit Tests for TicTacToeBoard
-**/
+ **/
 
 #include <gtest/gtest.h>
 #include "TicTacToeBoard.h"
- 
+
+#include <iostream>
+using namespace std;
+
 class TicTacToeBoardTest : public ::testing::Test
 {
 	protected:
@@ -15,13 +18,29 @@ class TicTacToeBoardTest : public ::testing::Test
 };
 
 /* EXAMPLE TEST FORMAT
-TEST(TicTacToeBoardTest, sanityCheck)
-{
-	ASSERT_TRUE(true);
-}
-*/
+   TEST(TicTacToeBoardTest, sanityCheck)
+   {
+   ASSERT_TRUE(true);
+   }
+ */
+
+//TEST(TicTacToeBoardTest, sanityCheck)
+//{
+//	ASSERT_TRUE(false);
+//ASSERT_FALSE(true); // failed
+//
+//}
 
 TEST(TicTacToeBoardTest, toggleTurn)
 {
-	ASSERT_TRUE(true);
+	TicTacToeBoard tb;
+	//Piece before = tb.toggleTurn();
+	cout << "one: " << tb.toggleTurn() << endl;
+	cout << "two: " << tb.toggleTurn() << endl;
+	cout << "three: " << tb.toggleTurn() << endl;
+	cout << "four: " << tb.toggleTurn() << endl;
+	//std::cout << before;
+	//Piece result = tb.toggleTurn();
+	//cout << result;
+	ASSERT_NE(tb.toggleTurn(), tb.toggleTurn());
 }

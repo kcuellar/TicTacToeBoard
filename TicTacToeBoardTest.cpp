@@ -34,13 +34,55 @@ class TicTacToeBoardTest : public ::testing::Test
 TEST(TicTacToeBoardTest, toggleTurn)
 {
 	TicTacToeBoard tb;
-	//Piece before = tb.toggleTurn();
-	cout << "one: " << tb.toggleTurn() << endl;
-	cout << "two: " << tb.toggleTurn() << endl;
-	cout << "three: " << tb.toggleTurn() << endl;
-	cout << "four: " << tb.toggleTurn() << endl;
-	//std::cout << before;
-	//Piece result = tb.toggleTurn();
-	//cout << result;
 	ASSERT_NE(tb.toggleTurn(), tb.toggleTurn());
+}
+
+TEST(TicTacToeBoardTest, placePiece)
+{
+	TicTacToeBoard tb;
+	Piece turn1 = tb.placePiece(0, 1);
+	Piece turn2 = tb.placePiece(0, 2);
+	ASSERT_NE(turn1, turn2);
+}
+
+TEST(TicTacToeBoardTest, getPiece)
+{
+	TicTacToeBoard tb;
+	Piece turn1 = tb.placePiece(0,1);
+	Piece turn2 = tb.placePiece(0,2);
+	Piece get1 = tb.getPiece(0,1);
+	Piece get2 = tb.getPiece(0,2);
+	if((turn1 == get1) && (turn2 == get2)) {
+		ASSERT_TRUE(true);
+	} else {
+		ASSERT_TRUE(false);
+	}
+}
+
+TEST(TicTacToeBoardTest, getWinnerr1X)
+{
+	TicTacToeBoard tb;
+	tb.placePiece(0,0);
+	tb.placePiece(1,1);
+	tb.placePiece(0,1);
+	tb.placePiece(2,1);
+	tb.placePiece(0,2);
+	tb.placePiece(2,2);
+	if(tb.getWinner() == 'X') {
+		ASSERT_TRUE(true);
+	}
+}
+
+TEST(TicTacToeBoardTest, getWinnerr2O)
+{
+	TicTacToeBoard tb;
+	tb.placePiece(0,1);
+	tb.placePiece(1,0);
+	tb.placePiece(2,1);
+	tb.placePiece(1,1);
+	tb.placePiece(2,2);
+	tb.placePiece(1,2);
+	if(tb.getWinner() == 'O') {
+		ASSERT_TRUE(true);
+	}
 }

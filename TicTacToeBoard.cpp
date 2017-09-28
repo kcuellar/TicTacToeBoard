@@ -17,6 +17,9 @@ TicTacToeBoard::TicTacToeBoard()
  * Switches turn member variable to represent whether it's X's or O's turn
  * and returns whose turn it is
  **/
+/*
+BUG: toggleTurn() initializes Piece turn to be O when turn was previously X, and vice versa. If turn is equal to X, turn should next be O, else turn should be X. The bug in this function initializes turn to be X when it was previously X, never changing the turn to be O's turn.
+*/
 Piece TicTacToeBoard::toggleTurn()
 {
 	if(turn == 'X') {

@@ -58,6 +58,27 @@ TEST(TicTacToeBoardTest, placePiece2)
 	ASSERT_EQ(turn1, turn3);
 }
 
+TEST(TicTacToeBoardTest, placePieceInvalid)
+{
+	TicTacToeBoard tb;
+	if(tb.placePiece(3,3) == '?') {
+		ASSERT_TRUE(true);
+	} else {
+		ASSERT_TRUE(false);
+	}
+}
+
+TEST(TicTacToeBoardTest, placePieceAlreadyThere)
+{
+	TicTacToeBoard tb;
+	tb.placePiece(0, 2);
+	if(tb.placePiece(0,2) == tb.getPiece(0,2)) {
+		ASSERT_TRUE(true);
+	} else {
+		ASSERT_TRUE(false);
+	}
+}
+
 TEST(TicTacToeBoardTest, getPiece)
 {
 	TicTacToeBoard tb;
@@ -106,6 +127,20 @@ TEST(TicTacToeBoardTest, getWinnerr1X)
 	}
 }
 
+TEST(TicTacToeBoardTest, getWinnerr1X1)
+{
+	TicTacToeBoard tb;
+	tb.placePiece(0,0);
+	tb.placePiece(1,1);
+	tb.placePiece(1,0);
+	tb.placePiece(2,1);
+	tb.placePiece(2,0);
+	tb.placePiece(2,2);
+	if(tb.getWinner() == 'X') {
+		ASSERT_TRUE(true);
+	}
+}
+
 TEST(TicTacToeBoardTest, getWinnerr2O)
 {
 	TicTacToeBoard tb;
@@ -119,6 +154,35 @@ TEST(TicTacToeBoardTest, getWinnerr2O)
 		ASSERT_TRUE(true);
 	}
 }
+
+TEST(TicTacToeBoardTest, getWinnerr2ODiag)
+{
+	TicTacToeBoard tb;
+	tb.placePiece(0,1);
+	tb.placePiece(0,0);
+	tb.placePiece(2,1);
+	tb.placePiece(1,1);
+	tb.placePiece(1,2);
+	tb.placePiece(2,2);
+	if(tb.getWinner() == 'O') {
+		ASSERT_TRUE(true);
+	}
+}
+
+TEST(TicTacToeBoardTest, getWinnerr2ODiag2)
+{
+	TicTacToeBoard tb;
+	tb.placePiece(0,1);
+	tb.placePiece(0,2);
+	tb.placePiece(2,1);
+	tb.placePiece(1,1);
+	tb.placePiece(1,2);
+	tb.placePiece(2,0);
+	if(tb.getWinner() == 'O') {
+		ASSERT_TRUE(true);
+	}
+}
+
 
 TEST(TicTacToeBoardTest, getWinnerTie)
 {

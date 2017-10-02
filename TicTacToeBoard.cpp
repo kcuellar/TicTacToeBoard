@@ -23,11 +23,11 @@ BUG: toggleTurn() initializes Piece turn to be O when turn was previously X, and
 Piece TicTacToeBoard::toggleTurn()
 {
 	if(turn == 'X') {
-		turn = X;
+		turn = O;
 		return turn;
 	}
 	else { // turn == O
-		turn = O;
+		turn = X;
 		return turn;
 	}
 }
